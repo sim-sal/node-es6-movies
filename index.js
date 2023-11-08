@@ -166,3 +166,37 @@ function getUniqueGenres(instancesArray) {
 // Utilizza la funzione per ottenere la lista dei generi unici
 const generiUnici = getUniqueGenres(instancesArray);
 console.log("I generi presenti sono:", generiUnici);
+
+
+function filtraFilmPerGenere(instancesArray, genere) {
+    // Filtra solo i film che corrispondono al genere specifico
+    const filmFiltrati = instancesArray.filter(film => film.genre === genere);
+
+    // Crea un array con le rappresentazioni stringhe dei film
+    const filmStringhe = filmFiltrati.map(film => film.toString());
+
+    return filmStringhe;
+}
+
+// Filtrare i film di genere "Fantasy"
+const fantasyFiltered = "Fantasy";
+const filmFantasy = filtraFilmPerGenere(instancesArray, fantasyFiltered);
+console.log(`Film di genere "${fantasyFiltered}":`);
+console.log(filmFantasy);
+
+// Filtrare i film di genere "Drama"
+const dramaFiltered = "Drama";
+const filmDrama = filtraFilmPerGenere(instancesArray, dramaFiltered);
+console.log(`Film di genere "${dramaFiltered}":`);
+console.log(filmDrama);
+
+// Filtrare i film di genere "Action"
+const actionFiltered = "Action";
+const filmAction = filtraFilmPerGenere(instancesArray, actionFiltered);
+console.log(`Film di genere "${actionFiltered}":`);
+console.log(filmAction);
+
+
+
+
+
