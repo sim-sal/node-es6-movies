@@ -106,7 +106,7 @@ class TvSeries extends Movie {
 }
 
 // Nuova istanza della classe TvSeries:
-const tvSeries1 = new TvSeries("Stranger Things", 2016, "Science Fiction", 8.7, "tv", 4);
+const tvSeries1 = new TvSeries("Stranger Things", 2016, "Action", 8.7, "tv", 4);
 console.log(tvSeries1.toString());
 
 
@@ -149,3 +149,20 @@ console.log(`La media dei voti per il genere "${genereDrama}" è ${mediaVotiDram
 const genereAction = "Action";
 const mediaVotiAction = calcolaMediaVotiPerGenere(instancesArray, genereAction);
 console.log(`La media dei voti per il genere "${genereAction}" è ${mediaVotiAction}`);
+
+// Creiamo una funzione che restituisca la lista di tutti i generi dei film senza ripetizioni
+function getUniqueGenres(instancesArray) {
+    const uniqueGenres = [];
+
+    instancesArray.forEach(movies => {
+        if (!uniqueGenres.includes(movies.genre)) {
+            uniqueGenres.push(movies.genre);
+        }
+    });
+
+    return uniqueGenres;
+}
+
+// Utilizza la funzione per ottenere la lista dei generi unici
+const generiUnici = getUniqueGenres(instancesArray);
+console.log("I generi presenti sono:", generiUnici);
