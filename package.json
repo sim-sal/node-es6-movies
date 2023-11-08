@@ -20,7 +20,7 @@
     "url": "https://github.com/sim-sal/node-es6-movies/issues"
   },
   "homepage": "https://github.com/sim-sal/node-es6-movies#readme",
-  "dependencies": {
+  "devDependencies": {
     "nodemon": "^3.0.1"
   }
 }
