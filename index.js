@@ -8,6 +8,13 @@ const filmsAndSeries = [
         type: "movie",
     },
     {
+        title: "Harry Potter and the Sorcerer's Stone",
+        year: 2001,
+        genre: "Fantasy",
+        rating: 7.6,
+        type: "movie",
+    },
+    {
         title: "The Shawshank Redemption",
         year: 1994,
         genre: "Drama",
@@ -15,10 +22,24 @@ const filmsAndSeries = [
         type: "movie",
     },
     {
-        title: "Inception",
-        year: 2010,
-        genre: "Sci-Fi",
-        rating: 8.8,
+        title: "The Godfather",
+        year: 1972,
+        genre: "Drama",
+        rating: 9.2,
+        type: "movie",
+    },
+    {
+        title: "Die Hard",
+        year: 1988,
+        genre: "Action",
+        rating: 8.2,
+        type: "movie",
+    },
+    {
+        title: "Mad Max: Fury Road",
+        year: 2015,
+        genre: "Action",
+        rating: 8.1,
         type: "movie",
     },
     {
@@ -32,10 +53,18 @@ const filmsAndSeries = [
     {
         title: "Breaking Bad",
         year: 2008,
-        genre: "Crime",
+        genre: "Drama",
         rating: 9.5,
         type: "tv",
         seasons: 5,
+    },
+    {
+        title: "Stranger Things",
+        year: 2016,
+        genre: "Action",
+        rating: 8.7,
+        type: "tv",
+        seasons: 4,
     },
 ];
 
@@ -79,3 +108,44 @@ class TvSeries extends Movie {
 // Nuova istanza della classe TvSeries:
 const tvSeries1 = new TvSeries("Stranger Things", 2016, "Science Fiction", 8.7, "tv", 4);
 console.log(tvSeries1.toString());
+
+
+
+// Creare un nuovo array di istanze di classe in base al tipo
+// utilizziamo la funzione .map() per creare un nuovo array in cui per ciascun elemento dell'array filmsAndSeries, verrà creata un'istanza della classe Movie o TvSeries in base al tipo e salvata nel nuovo array.
+const instancesArray = filmsAndSeries.map(item => {
+    if (item.type === "movie") {
+        return new Movie(item.title, item.year, item.genre, item.rating, item.type);
+    } else if (item.type === "tv") {
+        return new TvSeries(item.title, item.year, item.genre, item.rating, item.type, item.seasons);
+    }
+});
+
+// Creazione di una funzione per calcolare la media dei voti di un genere specifico
+function calcolaMediaVotiPerGenere(instancesArray, genere) {
+    // Filtriamo solo i film del genere specifico
+    const filmDelGenere = instancesArray.filter(film => film.genre === genere);
+
+    // Calcoliamo la somma dei voti
+    const sommaVoti = filmDelGenere.reduce((acc, film) => acc + film.rating, 0);
+
+    // Calcoliamo la media dei voti
+    const mediaVoti = sommaVoti / filmDelGenere.length;
+
+    return mediaVoti;
+}
+
+// Media voto per genere FANTASY
+const genereFantasy = "Fantasy";
+const mediaVotiFantasy = calcolaMediaVotiPerGenere(instancesArray, genereFantasy);
+console.log(`La media dei voti per il genere "${genereFantasy}" è ${mediaVotiFantasy}`);
+
+// Media voto per genere DRAMA
+const genereDrama = "Drama";
+const mediaVotiDrama = calcolaMediaVotiPerGenere(instancesArray, genereDrama);
+console.log(`La media dei voti per il genere "${genereDrama}" è ${mediaVotiDrama}`);
+
+// Media voto per genere ACTION
+const genereAction = "Action";
+const mediaVotiAction = calcolaMediaVotiPerGenere(instancesArray, genereAction);
+console.log(`La media dei voti per il genere "${genereAction}" è ${mediaVotiAction}`);
